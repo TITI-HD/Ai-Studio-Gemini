@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        body {
+            font-family: 'Helvetica', sans-serif;
+            color: #1a202c;
+            line-height: 1.5;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #4a5568;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        .republique {
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .titre {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2b6cb0;
+            margin-top: 20px;
+        }
+        .content {
+            margin-top: 40px;
+        }
+        .row {
+            margin-bottom: 15px;
+        }
+        .label {
+            font-weight: bold;
+            color: #4a5568;
+            width: 150px;
+            display: inline-block;
+        }
+        .footer {
+            margin-top: 80px;
+            text-align: right;
+            border-top: 1px solid #cbd5e0;
+            padding-top: 20px;
+        }
+        .seal {
+            margin-top: 20px;
+            font-style: italic;
+            color: #718096;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="republique">République du Code</div>
+        <div>Ministère de l'Administration Territoriale</div>
+        <div class="titre">EXTRAIT D'ACTE DE {{ dossier.get_type_acte_display|upper }}</div>
+    </div>
+
+    <div class="content">
+        <p>Il est certifié que, d'après les registres de l'état civil en notre possession :</p>
+        
+        <div class="row">
+            <span class="label">Numéro Dossier:</span>
+            <span>#{{ dossier.id }}</span>
+        </div>
+        <div class="row">
+            <span class="label">Demandeur:</span>
+            <span>{{ dossier.demandeur.get_full_name }}</span>
+        </div>
+        <div class="row">
+            <span class="label">Type d'acte:</span>
+            <span>{{ dossier.get_type_acte_display }}</span>
+        </div>
+        <div class="row">
+            <span class="label">Date de demande:</span>
+            <span>{{ dossier.date_soumission|date:"d F Y" }}</span>
+        </div>
+        
+        <div style="margin-top: 40px; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; background-color: #f7fafc;">
+            <p><strong>Observation officielle :</strong></p>
+            <p>{{ dossier.commentaire|default:"Aucun commentaire particulier." }}</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Fait à Paris, le {{ date|date:"d F Y" }}</p>
+        <p><strong>L'Officier d'État Civil</strong></p>
+        <div class="seal">Document généré électroniquement par E-État Civil</div>
+    </div>
+</body>
+</html>

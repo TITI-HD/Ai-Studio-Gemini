@@ -1,0 +1,8 @@
+Django==5.0.3
+psycopg2-binary==2.9.9
+WeasyPrint==61.2
+django-environ==0.11.2
+Pillow==10.2.0
+python-magic==0.4.27
+django-crispy-forms==2.1
+crispy-tailwind==1.0.1

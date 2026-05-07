@@ -1,0 +1,6 @@
+{
+  "name": "E-Services État Civil",
+  "description": "Plateforme d'e-services pour la gestion des demandes d'actes de naissance, mariage et décès.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
